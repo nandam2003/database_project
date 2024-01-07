@@ -4,6 +4,6 @@
 
 ### To run the program
 #### windows
-`gcc -o app main.c database.c` && `.\app`
+```gcc -o app main.c database.c``` && ```.\app```
 #### linux
 `gcc -o app main.c database.c` && `./app.out`
