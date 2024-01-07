@@ -19,7 +19,7 @@ void insert(Database *db, char *table_name, char *data)
         if (strcmp(db->tables[i].name, table_name) == 0)
         {
             Table *table = &(db->tables[i]);
-            table->rows = realloc(table->rows, sizeof(Row) * table->rows_count);
+            table->rows = realloc(table->rows, sizeof(Row) * (table->rows_count + 1));
             if (table->rows != NULL)
             {
                 table->rows_count++;

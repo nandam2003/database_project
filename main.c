@@ -13,7 +13,7 @@ int main()
     insert(myDatabase, "Table2", "Data2");
     insert(myDatabase, "Table1", "Data3");
     insert(myDatabase, "Table1", "Data4");
-    // insert(myDatabase, "Table2", "Data5");
+    insert(myDatabase, "Table2", "Data5");
 
     // Print the database content
     print_table(myDatabase, "Table1");
