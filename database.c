@@ -69,19 +69,26 @@ void update(Database *db, char *table_name, int id, char *new_data)
         if (strcmp(db->tables[i].name, table_name) == 0)
         {
             Table *table = &(db->tables[i]);
-
             for (int j = 0; j < table->rows_count; j++)
             {
                 Row *row = &(table->rows[j]);
                 if (row->id == id)
                 {
-                    row->data = new_data;
-                    printf("Data updated at %d \n", id);
-                    print_table(db, table_name);
+                    // Free the old data
+                    free(row->data);
+                    // Allocate memory for the new data
+                    row->data = malloc(strlen(new_data) + 1);
+                    if (row->data != NULL)
+                    {
+                        strcpy(row->data, new_data);
+                        printf("Data Updated.\n");
+                        return;
+                    }
+                    printf("Error in allocating memory for the row->data.\n");
                     return;
                 }
             }
-            printf("ID: \"%d\" does not exist \n", id);
+            printf("Row not found.\n");
             return;
         }
     }
