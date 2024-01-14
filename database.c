@@ -16,6 +16,7 @@ void insert(Database *db, char *table_name, char *data)
 {
     for (int i = 0; i < db->tables_count; i++)
     {
+        // If the table exists
         if (strcmp(db->tables[i].name, table_name) == 0)
         {
             Table *table = &(db->tables[i]);
@@ -62,6 +63,7 @@ void insert(Database *db, char *table_name, char *data)
     return;
 }
 
+// Update the data of a row
 void update(Database *db, char *table_name, int id, char *new_data)
 {
     for (int i = 0; i < db->tables_count; i++)
@@ -95,6 +97,7 @@ void update(Database *db, char *table_name, int id, char *new_data)
     printf("Table not found.\n");
 }
 
+// Function for printing the table
 void print_table(Database *db, char *table_name)
 {
     for (int i = 0; i < db->tables_count; i++)
@@ -118,7 +121,7 @@ void print_table(Database *db, char *table_name)
     printf("Table not found.\n");
 }
 
-// Cleanup the database
+// Function for Cleaning up the database
 void cleanup(Database *db)
 {
     free(db->DB_NAME);
