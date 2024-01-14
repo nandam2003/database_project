@@ -62,6 +62,32 @@ void insert(Database *db, char *table_name, char *data)
     return;
 }
 
+void update(Database *db, char *table_name, int id, char *new_data)
+{
+    for (int i = 0; i < db->tables_count; i++)
+    {
+        if (strcmp(db->tables[i].name, table_name) == 0)
+        {
+            Table *table = &(db->tables[i]);
+
+            for (int j = 0; j < table->rows_count; j++)
+            {
+                Row *row = &(table->rows[j]);
+                if (row->id == id)
+                {
+                    row->data = new_data;
+                    printf("Data updated at %d \n", id);
+                    print_table(db, table_name);
+                    return;
+                }
+            }
+            printf("ID: \"%d\" does not exist \n", id);
+            return;
+        }
+    }
+    printf("Table not found.\n");
+}
+
 void print_table(Database *db, char *table_name)
 {
     for (int i = 0; i < db->tables_count; i++)

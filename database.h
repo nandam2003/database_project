@@ -31,6 +31,7 @@ typedef struct
 // Function prototypes
 Database *create_db(char *name);
 void insert(Database *db, char *table_name, char *data);
+void update(Database *db, char *table_name, int id, char *new_data);
 void print_table(Database *db, char *table_name);
 void cleanup(Database *db);
 

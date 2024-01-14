@@ -19,6 +19,8 @@ int main()
     print_table(myDatabase, "Table1");
     print_table(myDatabase, "Table2");
 
+    update(myDatabase, "Table1", 2, "New Data");
+
     cleanup(myDatabase);
     printf("Database cleaned up.\n");
 
